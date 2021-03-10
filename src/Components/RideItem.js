@@ -1,6 +1,24 @@
-import React from 'react'
+import RideForm from './RideForm'
+import React, {useState} from 'react'
 
-export default function RideItem({name, ride_type, meeting_location, start_time, day_half, day_of_week}) {
+export default function RideItem({
+                                    id, 
+                                    name, 
+                                    ride_type, 
+                                    meeting_location, 
+                                    start_time, 
+                                    day_half, 
+                                    day_of_week, 
+                                    deleteRide,
+                                    updateRide
+            }) {
+
+    const [isToggled, setIsToggled] = useState(false)
+
+    const ride = {id, name, ride_type, meeting_location, start_time, day_half, day_of_week}
+    
+    const handleClick = (event) => deleteRide(id)
+    const handleToggle = (event) => setIsToggled(!isToggled)
 
     const rideCard = () => (
         <li className="ride-item">
@@ -9,9 +27,17 @@ export default function RideItem({name, ride_type, meeting_location, start_time,
             <p>Meeting Location: {meeting_location}</p>
             <p>Takes place every: {day_of_week}</p>
             <p>Start Time: {start_time} {day_half}</p>
+            <button className="edit-button" onClick={handleToggle}>EDIT</button>
+            <button className="delete-button" onClick={handleClick}>DELETE</button>
+
         </li>
     )
-    return (
-        rideCard()        
-    )
+    return isToggled
+        ? <RideForm 
+            ride={ride}
+            handleToggle={handleToggle}
+            submitAction={updateRide}
+          />
+        : rideCard()        
+    
 }

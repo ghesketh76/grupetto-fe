@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: rgb(148, 17, 148);
+  background-color: rgb(140, 55, 238);
 }
 
 .ride-list{
@@ -13,6 +13,7 @@ body {
   justify-content: space-between;
   width: 90%;
   margin: 0 auto;
+  padding-bottom: 10%;
   padding-inline-start: 0;
 }
 
@@ -20,8 +21,52 @@ body {
   background-color: white;
   width: 30%;
   height: max-content;
-  box-shadow: 0 20px 20px -10px rgb(83, 3, 83);
+  box-shadow: 0 20px 20px -10px rgb(81, 22, 148);
   text-align: center;
   border-radius: 6px;
-  
+  margin: 10px;
+}
+
+.ride-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: max-content;
+  margin: auto;
+  justify-content: space-evenly;
+  background-color: white;
+  padding: 20px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+input[type="submit"]{
+  padding: 10px;
+  box-shadow: 0 20px 20px -10px rgb(199, 199, 199);
+  transition: .2s linear;
+}
+
+input[type="submit"]:hover{
+  color: white;
+  background-color: rgb(35, 205, 26);
+  border: none;
+  font-weight: bold;
+}
+
+.delete-button{
+  color: white;
+  background-color: rgb(197, 90, 90);
+  margin: 10px;
+}
+
+.close-button {
+  padding: 10px;
+  margin: 2px;
+  /* box-shadow: 0 20px 20px -10px rgb(199, 199, 199); */
+  transition: .2s linear;
+  background-color: rgb(197, 90, 90);
+}
+
+.edit-button{
+  margin: 10px;
 }

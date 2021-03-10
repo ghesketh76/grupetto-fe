@@ -40,6 +40,14 @@ export default class RideForm extends Component {
    handleSubmit = (event) => {
        event.preventDefault()
        this.props.submitAction(this.state)
+       this.setState({
+        name: "",
+        ride_type: "",
+        meeting_location: "",
+        start_time: "",
+        day_half: "",
+        day_of_week: ""
+       })
    }
 
    showCloseButton = () => {
@@ -52,7 +60,7 @@ export default class RideForm extends Component {
         const {name, ride_type, meeting_location, start_time, day_half, day_of_week} = this.state
         return (
             <form className="ride-form" onSubmit={this.handleSubmit}>
-                <h2>Create a New Group Ride</h2>
+                {this.props.ride ? <h2>Edit Group Ride</h2> : <h2>Create a New Group Ride</h2>}
                 <label>Ride Name</label>
                 <input 
                     type="text"

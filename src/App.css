@@ -6,20 +6,30 @@ body {
   background-color: rgb(140, 55, 238);
 }
 
+.ride-section {
+ width: 60%
+}
+
 .ride-list{
   display: flex;
-  flex-flow: row wrap;
+  flex-direction: column;
   list-style-type: none;
   justify-content: space-between;
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
   padding-bottom: 10%;
   padding-inline-start: 0;
+  overflow-y: auto;
+  height: 65vh;
+}
+
+.map-section {
+  margin-right: 10px;
 }
 
 .ride-item{
-  background-color: white;
-  width: 30%;
+  background-color: rgb(233, 231, 231);
+  width: 90%;
   height: max-content;
   box-shadow: 0 20px 20px -10px rgb(81, 22, 148);
   text-align: center;
@@ -95,4 +105,46 @@ input[type="submit"]:hover{
 
 .logout {
   color: white;
+}
+
+.form-toggle {
+  color: #fff !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #241568;
+  padding: 20px;
+  border-radius: 5px;
+  display: inline-block;
+  border: none;
+  transition: all 0.4s ease 0s;
+  width: 50%;
+}
+
+.form-toggle:hover{
+  color: white;
+  background-color: rgb(35, 205, 26);
+  border: none;
+  font-weight: bold;
+}
+
+.home-page {
+  display: flex;
+}
+
+
+.pin {
+  display: flex;
+  align-items: center;
+  width: 180px;
+  color: var(--main-blue);
+}
+
+.pin-icon {
+  font-size: 4rem;
+}
+
+.pin-text {
+  font-size: 1.3em;
+  color: red;
+  font-weight: bold;
 }

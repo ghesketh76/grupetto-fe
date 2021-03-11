@@ -5,6 +5,8 @@ const initialState = {
     name: "",
     ride_type: "",
     meeting_location: "",
+    meeting_location_lat: "",
+    meeting_location_long: "",
     start_time: "",
     day_half: "",
     day_of_week: ""
@@ -17,12 +19,14 @@ export default class RideForm extends Component {
     componentDidMount(){
         const {ride} = this.props
         if(this.props.ride){
-            const {id, name, ride_type, meeting_location, start_time, day_half, day_of_week} = ride
+            const {id, name, ride_type, meeting_location, meeting_location_lat, meeting_location_long, start_time, day_half, day_of_week} = ride
             this.setState({
                 id,
                 name,
                 ride_type,
                 meeting_location,
+                meeting_location_lat,
+                meeting_location_long,
                 start_time,
                 day_half,
                 day_of_week
@@ -44,6 +48,8 @@ export default class RideForm extends Component {
         name: "",
         ride_type: "",
         meeting_location: "",
+        meeting_location_lat: "",
+        meeting_location_long: "",
         start_time: "",
         day_half: "",
         day_of_week: ""
@@ -57,14 +63,14 @@ export default class RideForm extends Component {
                 : null
     }
 
-    showCloseButtonOnNew = () => {
-        return this.props.formToggle
-                ? null
-                : <button className="close-button" onClick={this.props.handleFormToggle}>Close Form</button>
-    }
+    // showCloseButtonOnNew = () => {
+    //     return this.props.formToggle
+    //             ? null
+    //             : <button className="close-button" onClick={this.props.handleFormToggle}>Close Form</button>
+    // }
 
     render() {
-        const {name, ride_type, meeting_location, start_time, day_half, day_of_week} = this.state
+        const {name, ride_type, meeting_location, meeting_location_lat, meeting_location_long, start_time, day_half, day_of_week} = this.state
         return (
             <form className="ride-form" onSubmit={this.handleSubmit}>
                 {this.props.ride ? <h2>Edit Group Ride</h2> : <h2>Create a New Group Ride</h2>}
@@ -88,6 +94,20 @@ export default class RideForm extends Component {
                     name="meeting_location"   
                     value={meeting_location}
                     onChange={this.handleChange} 
+                />
+                <label>Latitude</label>
+                <input 
+                    type="number"
+                    name="meeting_location_lat"
+                    value={meeting_location_lat}
+                    onChange={this.handleChange}
+                />
+                <label>Longitude</label>
+                <input 
+                    type="number"
+                    name="meeting_location_long"
+                    value={meeting_location_long}
+                    onChange={this.handleChange}
                 />
                 <label>Start Time</label>
                 <input 
@@ -114,7 +134,7 @@ export default class RideForm extends Component {
                 </select>
                 <input type="submit" />
                 {this.showCloseButtonOnEdit()}
-                {this.showCloseButtonOnNew()}
+                {/* {this.showCloseButtonOnNew()} */}
             </form>
         )
     }

@@ -1,17 +1,46 @@
 @import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
 
 .header {
-    background-color: rgb(29, 28, 28);
+    background-color: rgb(29, 28, 29);
     box-shadow: 0 20px 30px -5px rgb(81, 22, 148);
     text-align: left;
-    padding-left: 2%;
+    /* padding-left: 2%; */
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     margin-bottom: 2%;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     
+}
+
+nav {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+}
+
+a.logout {
+  color: #fff !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #830083;
+  padding: 20px;
+  border-radius: 5px;
+  display: inline-block;
+  border: none;
+  transition: all 0.4s ease 0s;
+  width: 75px;
+  height: 20px;
+  margin-top: 10%;
+  margin-left: 50px;
+}
+
+a.logout:hover {
+  color: white;
+  background-color: rgb(255, 0, 0);
+  border: none;
+  font-weight: bold;
 }
 
 .victory {
@@ -20,9 +49,9 @@
     font-variant:small-caps;
     font-size: 100px;
     -webkit-transform: skew(-3deg,-3deg);
-    padding-left: 0px;
+    padding-left: 20px;
     padding-bottom: 15px;
-    padding-right: 50%;
+    /* padding-right: 50%; */
     background-image: -webkit-linear-gradient(#FF0FF8 0%,  #F9F9F7 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

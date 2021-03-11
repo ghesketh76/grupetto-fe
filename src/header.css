@@ -8,6 +8,9 @@
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     margin-bottom: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
     
 }
 
@@ -19,6 +22,7 @@
     -webkit-transform: skew(-3deg,-3deg);
     padding-left: 0px;
     padding-bottom: 15px;
+    padding-right: 50%;
     background-image: -webkit-linear-gradient(#FF0FF8 0%,  #F9F9F7 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

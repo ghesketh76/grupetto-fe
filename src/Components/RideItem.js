@@ -10,7 +10,9 @@ export default function RideItem({
                                     day_half, 
                                     day_of_week, 
                                     deleteRide,
-                                    updateRide
+                                    updateRide,
+                                    user,
+                                    user_id
             }) {
 
     const [isToggled, setIsToggled] = useState(false)
@@ -20,6 +22,8 @@ export default function RideItem({
     const handleClick = (event) => deleteRide(id)
     const handleToggle = (event) => setIsToggled(!isToggled)
 
+   
+
     const rideCard = () => (
         <li className="ride-item">
             <h2>{name}</h2>
@@ -27,8 +31,17 @@ export default function RideItem({
             <p>Meeting Location: {meeting_location}</p>
             <p>Takes place every: {day_of_week}</p>
             <p>Start Time: {start_time} {day_half}</p>
-            <button className="edit-button" onClick={handleToggle}>EDIT</button>
-            <button className="delete-button" onClick={handleClick}>DELETE</button>
+            {user.id === user_id
+                ? (
+                <>
+                   <button className="edit-button" onClick={handleToggle}>EDIT</button>
+                   <button className="delete-button" onClick={handleClick}>DELETE</button>
+                </>
+                )
+                : null
+            }
+
+            
 
         </li>
     )

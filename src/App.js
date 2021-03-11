@@ -1,14 +1,15 @@
 import { Component } from 'react';
 import './App.css';
 import Header from './Components/Header';
-import RideContainer from './Components/RideContainer';
-import RideForm from './Components/RideForm';
 import SignUpForm from './Components/SignUpForm';
-import {Route, Switch, Redirect, Link} from 'react-router-dom'
+import {Route, Switch, Redirect} from 'react-router-dom'
 import Home from './Components/Home'
 import PrivateRoute from './Components/PrivateRoute'
+import Login from './Components/Login'
+
 const ridesURL = "http://localhost:3000/rides"
 const userURL = "http://localhost:3000/users"
+const loginURL = "http://localhost:3000/login"
 
 class App extends Component {
 
@@ -19,7 +20,12 @@ class App extends Component {
   }
 
   componentDidMount(){
-    fetch(ridesURL)
+    fetch(ridesURL, {
+      method: 'GET',
+      headers: {
+        "Authorization": `Bearer ${localStorage.token}`
+      }
+    })
       .then(response => response.json())
       .then(response => {
         this.setState({
@@ -30,15 +36,33 @@ class App extends Component {
 
   addRide = (newRide) => {
     this.setState({
-      rides: [...this.state.rides, newRide]
+      rides: [...this.state.rides, {
+        name: newRide.name, 
+        ride_type: newRide.ride_type, 
+        meeting_location: newRide.meeting_location,
+        start_time: newRide.start_time,
+        day_half: newRide.day_half,
+        day_of_week: newRide.day_of_week,
+        user_id: this.state.user.id
+                                    
+      }]
     })
-
+    
     fetch(ridesURL, {
       method: "POST",
       headers: {
-        'Content-type': 'application/json'
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${localStorage.token}`
       },
-      body: JSON.stringify({ride: {...newRide}})
+      body: JSON.stringify({ride: {
+                                    name: newRide.name, 
+                                    ride_type: newRide.ride_type, 
+                                    meeting_location: newRide.meeting_location,
+                                    start_time: newRide.start_time,
+                                    day_half: newRide.day_half,
+                                    day_of_week: newRide.day_of_week,
+                                    user_id: this.state.user.id
+                                  }})
     })
   }
 
@@ -50,6 +74,9 @@ class App extends Component {
 
     fetch(`${ridesURL}/${id}`, {
       method: "DELETE",
+      headers: {
+        'Authorization': `Bearer ${localStorage.token}`
+      }
     })
   }
 
@@ -81,12 +108,34 @@ class App extends Component {
       })
   }
 
+  login = ({username, password}) => {
+    return fetch(loginURL, {
+      method: "POST",
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({username, password})
+    })
+      .then(response => response.json())
+      .then(response => {
+        if(response.errors){
+          this.setState({alerts: response.errors})
+        } else {
+          localStorage.setItem('token', response.token)
+          this.setState({
+            user:response.user,
+            alerts: ["Succesful Login!"]
+          })
+        }
+      })
+  }
+
   
 
   render(){
     return (
       <div className="App">
-        <Header />
+        <Header user={this.state.user}/>
         <Switch>
           <PrivateRoute 
             exact
@@ -100,6 +149,9 @@ class App extends Component {
           />
           <Route exact path='/signup' render={(routerProps) => {
             return <SignUpForm {...routerProps} signUp={this.signUp} alerts={this.state.alerts}/>
+          }}/>
+          <Route exact path='/login' render={(routerProps) => {
+            return <Login {...routerProps} login={this.login} alerts={this.state.alerts}/>
           }}/>
           <Redirect to="/"/>
         </Switch>

@@ -35,7 +35,7 @@ export default class RideForm extends Component {
        this.setState({
            [name]: value
        })
-   }
+   } 
 
    handleSubmit = (event) => {
        event.preventDefault()
@@ -48,12 +48,19 @@ export default class RideForm extends Component {
         day_half: "",
         day_of_week: ""
        })
+       
    }
 
-   showCloseButton = () => {
+   showCloseButtonOnEdit = () => {
        return this.props.ride
                 ? <button className="close-button" onClick={this.props.handleToggle}>Close Form</button>
                 : null
+    }
+
+    showCloseButtonOnNew = () => {
+        return this.props.formToggle
+                ? null
+                : <button className="close-button" onClick={this.props.handleFormToggle}>Close Form</button>
     }
 
     render() {
@@ -106,7 +113,8 @@ export default class RideForm extends Component {
                     <option value="Sunday">Sunday</option>
                 </select>
                 <input type="submit" />
-                {this.showCloseButton()}
+                {this.showCloseButtonOnEdit()}
+                {this.showCloseButtonOnNew()}
             </form>
         )
     }

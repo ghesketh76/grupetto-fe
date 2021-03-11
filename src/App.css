@@ -38,6 +38,7 @@ body {
   padding: 20px;
   border-radius: 6px;
   margin-bottom: 20px;
+  box-shadow: 0 20px 20px -10px rgb(81, 22, 148);
 }
 
 .signup-form {
@@ -52,6 +53,7 @@ body {
   padding: 20px;
   border-radius: 6px;
   margin-bottom: 20px;
+  box-shadow: 0 20px 20px -10px rgb(81, 22, 148);
 }
 
 input[type="submit"]{
@@ -89,4 +91,8 @@ input[type="submit"]:hover{
 
 .alert {
   color: red;
+}
+
+.logout {
+  color: white;
 }

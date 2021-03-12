@@ -25,7 +25,7 @@ export default function RideItem({
     const handleClick = (event) => deleteRide(id)
     const handleToggle = (event) => setIsToggled(!isToggled)
 
-   const handleJoinRide = () => joinRide({ride: id, user: user.id})
+   const handleJoinRide = () => joinRide({ride_id: id, user_id: user.id})
         
     const countJoinRides = () => {
         let joinRideArray = joinRides.filter(joined => joined.ride_id === id)

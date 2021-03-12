@@ -17,7 +17,8 @@ class App extends Component {
   state = {
     rides: [],
     user: {},
-    alerts: []
+    alerts: [],
+    joinRides: []
   }
 
   componentDidMount(){
@@ -48,7 +49,8 @@ class App extends Component {
       .then(response => {
         this.setState({
           user: response.user,
-          rides: response.rides
+          rides: response.rides,
+          joinRides: response.joinrides
         })
       })
   }
@@ -154,7 +156,12 @@ class App extends Component {
   }
 
   joinRide = (newJoinRide) => {
-    return fetch(joinRideURL, {
+
+    this.setState({
+      joinRides: [...this.state.joinRides, newJoinRide]
+    })
+
+   fetch(joinRideURL, {
       method: 'POST', 
       headers: {
         'Content-type': 'application/json',
@@ -181,6 +188,7 @@ class App extends Component {
             deleteRide={this.deleteRide}
             updateRide={this.updateRide}
             joinRide={this.joinRide}
+            joinRides={this.state.joinRides}
           />
           <Route exact path='/signup' render={(routerProps) => {
             return <SignUpForm {...routerProps} signUp={this.signUp} alerts={this.state.alerts}/>

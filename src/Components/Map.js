@@ -16,14 +16,14 @@ class SimpleMap extends Component {
         lat: 39.748229,
         lng: -104.992903
       },
-      zoom: 9
+      zoom: 10
     };
    
     render() {
       return (
         <div className="map-section" style={{ height: '75vh', width: '100%' }}>
           <GoogleMapReact
-            bootstrapURLKeys={{ key: {/* GOOGLE MAP API KEY*/}}
+            bootstrapURLKeys={{ key: "AIzaSyDhZGQ5Nyde4_5zrY3dS-Ms3WXjB-igj0w"}}
             defaultCenter={this.props.center}
             defaultZoom={this.props.zoom}
           >

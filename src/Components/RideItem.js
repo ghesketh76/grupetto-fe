@@ -13,10 +13,12 @@ export default function RideItem({
                                     updateRide,
                                     user,
                                     user_id,
-                                    joinRide
+                                    joinRide,
+                                    joinRides
             }) {
 
     const [isToggled, setIsToggled] = useState(false)
+    const [joinRideCount, setJoinRideCount] = useState("")
 
     const ride = {id, name, ride_type, meeting_location, start_time, day_half, day_of_week}
     
@@ -25,7 +27,10 @@ export default function RideItem({
 
    const handleJoinRide = () => joinRide({ride: id, user: user.id})
         
-   
+    const countJoinRides = () => {
+        let joinRideArray = joinRides.filter(joined => joined.ride_id === id)
+        return joinRideArray.length
+    }
 
     const rideCard = () => (
         <li className="ride-item">
@@ -34,6 +39,7 @@ export default function RideItem({
             <p>Meeting Location: {meeting_location}</p>
             <p>Takes place every: {day_of_week}</p>
             <p>Start Time: {start_time} {day_half}</p>
+            <p>Attendees: {countJoinRides()}</p>
             <button onClick={handleJoinRide} className="join-button">JOIN RIDE</button>
             {user.id === user_id
                 ? (

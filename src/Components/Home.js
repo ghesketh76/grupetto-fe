@@ -18,7 +18,14 @@ export default function Home(props) {
                 ? <button className="form-toggle" onClick={handleFormToggle}>Post a New Ride!</button>
                 : <RideForm submitAction={props.submitAction} formToggle={formToggle} handleFormToggle={handleFormToggle}/>
                 }
-                <RideContainer user={props.user} rides={props.rides} deleteRide={props.deleteRide} updateRide={props.updateRide} joinRide={props.joinRide}/>
+                <RideContainer 
+                        user={props.user} 
+                        rides={props.rides} 
+                        deleteRide={props.deleteRide} 
+                        updateRide={props.updateRide} 
+                        joinRide={props.joinRide}
+                        joinRides={props.joinRides}
+                />
             </div>
             <Map rides={props.rides}/>
             

@@ -133,6 +133,7 @@ export default class RideForm extends Component {
                     <option value="Sunday">Sunday</option>
                 </select>
                 <input type="submit" />
+                
                 {this.showCloseButtonOnEdit()}
                 {this.showCloseButtonOnNew()}
             </form>

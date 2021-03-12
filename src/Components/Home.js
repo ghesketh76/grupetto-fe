@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import RideContainer from './RideContainer';
 import RideForm from './RideForm';
 import Map from './Map'
+import EditForm from './EditForm'
 
 export default function Home(props) {
 
@@ -16,7 +17,7 @@ export default function Home(props) {
             <div className="ride-section">
                 {formToggle
                 ? <button className="form-toggle" onClick={handleFormToggle}>Post a New Ride!</button>
-                : <RideForm submitAction={props.submitAction} formToggle={formToggle} handleFormToggle={handleFormToggle}/>
+                :  <RideForm submitAction={props.submitAction} formToggle={formToggle} handleFormToggle={handleFormToggle}/>
                 }
                 <RideContainer 
                         user={props.user} 

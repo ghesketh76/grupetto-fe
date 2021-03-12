@@ -1,4 +1,4 @@
-import RideForm from './RideForm'
+import EditForm from './EditForm'
 import React, {useState} from 'react'
 
 export default function RideItem({
@@ -56,7 +56,7 @@ export default function RideItem({
         </li>
     )
     return isToggled
-        ? <RideForm 
+        ? <EditForm 
             ride={ride}
             handleToggle={handleToggle}
             submitAction={updateRide}

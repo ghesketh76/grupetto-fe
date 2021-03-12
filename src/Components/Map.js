@@ -13,10 +13,10 @@ const LocationPin = ({ text }) => (
 class SimpleMap extends Component {
     static defaultProps = {
       center: {
-        lat: 39.748229,
-        lng: -104.992903
+        lat: 39.801982,
+        lng: -104.972189
       },
-      zoom: 10
+      zoom: 10.75
     };
    
     render() {

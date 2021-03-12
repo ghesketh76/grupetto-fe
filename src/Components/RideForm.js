@@ -44,6 +44,7 @@ export default class RideForm extends Component {
    handleSubmit = (event) => {
        event.preventDefault()
        this.props.submitAction(this.state)
+    //    this.props.handleToggle()
        this.setState({
         name: "",
         ride_type: "",
@@ -134,7 +135,7 @@ export default class RideForm extends Component {
                 </select>
                 <input type="submit" />
                 
-                {this.showCloseButtonOnEdit()}
+                {/* {this.showCloseButtonOnEdit()} */}
                 {this.showCloseButtonOnNew()}
             </form>
         )

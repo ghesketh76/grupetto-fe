@@ -17,10 +17,11 @@ body {
   justify-content: space-between;
   width: 95%;
   margin: 0 auto;
+  margin-top: 10px;
   padding-bottom: 10%;
   padding-inline-start: 0;
   overflow-y: auto;
-  height: 65vh;
+  height: 61vh;
 }
 
 .map-section {
@@ -87,9 +88,23 @@ input[type="submit"]:hover{
   margin: 10px;
 }
 
+.delete-button:hover{
+  color: white;
+  background-color: rgb(235, 8, 8);
+  /* border: none; */
+  font-weight: bold;
+}
+
 .join-button {
-  background-color: rgba(40, 211, 40, 0.753);
+  background-color: #FF0FF8;
   margin: 10px;
+}
+
+.join-button:hover {
+  color: white;
+  background-color: rgb(35, 205, 26);
+  /* border: none; */
+  font-weight: bold;
 }
 
 .close-button {
@@ -100,8 +115,20 @@ input[type="submit"]:hover{
   background-color: rgb(197, 90, 90);
 }
 
+.close-button:hover{
+  color: white;
+  background-color: rgb(235, 8, 8);
+  border: none;
+  font-weight: bold;
+}
+
 .edit-button{
+  background-color: rgb(248, 187, 74);
   margin: 10px;
+}
+
+.edit-button:hover {
+  background-color: rgb(255, 153, 0);
 }
 
 .alert {
@@ -140,7 +167,7 @@ input[type="submit"]:hover{
 .pin {
   display: flex;
   align-items: center;
-  width: 180px;
+  width: 100px;
   color: var(--main-blue);
 }
 
@@ -149,6 +176,10 @@ input[type="submit"]:hover{
 }
 
 .pin-text {
+  /* background-color: rgb(226, 224, 224);
+  border-style: groove;
+  border-radius: 6px;
+  border-color: rgb(92, 90, 90); */
   font-size: 1.3em;
   color: red;
   font-weight: bold;

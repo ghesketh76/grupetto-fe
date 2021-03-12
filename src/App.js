@@ -10,6 +10,7 @@ import Login from './Components/Login'
 const ridesURL = "http://localhost:3000/rides"
 const userURL = "http://localhost:3000/users"
 const loginURL = "http://localhost:3000/login"
+const joinRideURL = "http://localhost:3000/joinrides"
 
 class App extends Component {
 
@@ -20,16 +21,34 @@ class App extends Component {
   }
 
   componentDidMount(){
-    fetch(ridesURL, {
+    this.authorize_user()
+    // fetch(ridesURL, {
+    //   method: 'GET',
+    //   headers: {
+    //     "Authorization": `Bearer ${localStorage.token}`
+    //   }
+    // })
+    //   .then(response => response.json())
+    //   .then(response => {
+    //     this.setState({
+    //       rides: response
+    //     })
+    //   })
+  }
+
+  authorize_user = () => {
+    fetch('http://localhost:3000/profile', {
       method: 'GET',
       headers: {
         "Authorization": `Bearer ${localStorage.token}`
       }
     })
       .then(response => response.json())
+      // .then(response => console.log(response.user))
       .then(response => {
         this.setState({
-          rides: response
+          user: response.user,
+          rides: response.rides
         })
       })
   }
@@ -134,6 +153,17 @@ class App extends Component {
       })
   }
 
+  joinRide = (newJoinRide) => {
+    return fetch(joinRideURL, {
+      method: 'POST', 
+      headers: {
+        'Content-type': 'application/json',
+        'Authorization': `Bearer ${localStorage.token}`
+      },
+      body: JSON.stringify(newJoinRide)
+      
+    })
+  }
   
 
   render(){
@@ -150,6 +180,7 @@ class App extends Component {
             user={this.state.user}
             deleteRide={this.deleteRide}
             updateRide={this.updateRide}
+            joinRide={this.joinRide}
           />
           <Route exact path='/signup' render={(routerProps) => {
             return <SignUpForm {...routerProps} signUp={this.signUp} alerts={this.state.alerts}/>

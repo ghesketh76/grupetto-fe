@@ -63,11 +63,11 @@ export default class RideForm extends Component {
                 : null
     }
 
-    // showCloseButtonOnNew = () => {
-    //     return this.props.formToggle
-    //             ? null
-    //             : <button className="close-button" onClick={this.props.handleFormToggle}>Close Form</button>
-    // }
+    showCloseButtonOnNew = () => {
+        return this.props.formToggle
+                ? null
+                : <button className="close-button" onClick={this.props.handleFormToggle}>Close Form</button>
+    }
 
     render() {
         const {name, ride_type, meeting_location, meeting_location_lat, meeting_location_long, start_time, day_half, day_of_week} = this.state
@@ -134,7 +134,7 @@ export default class RideForm extends Component {
                 </select>
                 <input type="submit" />
                 {this.showCloseButtonOnEdit()}
-                {/* {this.showCloseButtonOnNew()} */}
+                {this.showCloseButtonOnNew()}
             </form>
         )
     }

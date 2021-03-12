@@ -87,6 +87,11 @@ input[type="submit"]:hover{
   margin: 10px;
 }
 
+.join-button {
+  background-color: rgba(40, 211, 40, 0.753);
+  margin: 10px;
+}
+
 .close-button {
   padding: 10px;
   margin: 2px;
